@@ -1,4 +1,4 @@
-# SSPE
+# SSPE (Seven segments processing engine)
 
 > CLI application to process text files with numbers in seven-segment format in three lines of text files (.dat || .txt) 
 
