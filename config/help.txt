@@ -1,0 +1,36 @@
+  Hi {{alien}} with this CLI you can do it the followind:
+
+    An action has this format
+    sspe action [options]
+
+    Actions {{coffee}}
+    {{one}} showme: run an example with a file included in this CLI.
+          example -> sspe showme
+
+    {{two}} create: create a file with numbers in format seven-segment.
+        options:
+          --name: file name, without extension. *
+          --number: number to be converted to seven-segment format. 
+              A number between 5 and 16 units and less than 9007199254740990.
+              (If number not provided, the system will generate it randomly.)
+          example -> sspe create --name File_1 --number 310390
+
+    {{three}} list: displays a list of previously created files to interact with them.
+          example -> sspe list
+
+    {{four}} select: select a ".txt" or ".dat" file in seven-segment format for processing.
+        options:
+          --path: location of the file to be processed. *
+          example -> sspe select --path D:/Data/Test/FunnyFile.txt
+
+    Plus {{heart}}
+    {{five}} ml: funtions for machine learning library.
+        options: (One at a time) {{robot_face}}
+          --add: number to add as data for training process. (if you send "auto" as value, the system will generate it randomly)
+            example -> sspe ml --add 31039064 OR sspe ml --add auto
+          --path: location of the file to be processed. *
+          example -> sspe ml --path D:/Data/Test/LastFile.txt
+          --iter: number of iterations for training. (if not indicated, default is 20.000)
+          example -> sspe ml --iter 30000 OR -> sspe ml
+
+  {{warning}} Observation: params market with * are obligatory.
