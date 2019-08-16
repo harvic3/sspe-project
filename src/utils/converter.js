@@ -22,7 +22,7 @@ const patterns = {
 exports.patterns = patterns;
 
 const haveTreeOrMoreLines = lines => {
-  if (lines.length < 4) {
+  if (!lines || lines.length < 3) {
     return false;
   }
   return true;
