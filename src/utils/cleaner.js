@@ -5,7 +5,8 @@ const pattern = os.type() === 'Windows_NT' ? /\r\n/ : /\n/;
 
 exports.deleteUnnecessaryLines = lines => {
   if (lines && lines.length > 3) {
-    return lines.splice(0, 3);
+    lines.splice(3, 1);
+    return lines;
   }
   throw new Error(`The file don´t have a valid data.`);
 };

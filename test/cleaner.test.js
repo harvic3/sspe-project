@@ -4,12 +4,13 @@ const cleaner = require('../src/utils/cleaner');
 const os = require('os');
 
 const removed = os.type() === 'Windows_NT' ? 2 : 1;
+const lineBreak = os.type() === 'Windows_NT' ? '\r\n' : '\n';
 
 let _fourLines = [
-  '     _   _       _  \r\n',
-  '|  _|  _| |_| |_  \r\n',
-  '| |_   _|   |  _| \r\n',
-  '\x00',
+  `     _   _       _  ${lineBreak}`,
+  `|  _|  _| |_| |_  ${lineBreak}`,
+  `| |_   _|   |  _| ${lineBreak}`,
+  `\x00`,
 ];
 
 describe('When file lines is mayor to three', () => {
