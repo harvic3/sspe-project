@@ -1,5 +1,6 @@
 'use strict';
 
+const path = require('path');
 const {
   readFile,
   saveFile,
@@ -86,6 +87,7 @@ const validateCreateFileParameters = (fileName, inputNumber) => {
 
 exports.processFile = filePath => {
   const result = new Result();
+  filePath = path.normalize(filePath);
   try {
     if (!isValidFilePath(filePath)) {
       throw new Error(
@@ -110,6 +112,7 @@ exports.processFile = filePath => {
 
 exports.readFile = filePath => {
   const result = new Result();
+  filePath = path.normalize(filePath);
   try {
     result.data = readFile(filePath);
     result.flow = flowResult.success;

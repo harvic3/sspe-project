@@ -1,5 +1,6 @@
 'use strict';
 
+const path = require('path');
 const {
   processFile,
   readFile,
@@ -15,7 +16,7 @@ const {
 } = require('./src/lib/mlNetOperator');
 
 const EXAMPLE_FILE_NAME = '/config/ExampleFile.txt';
-const EXAMPLE_FILE_PATH = `${__dirname}/${EXAMPLE_FILE_NAME}`;
+const EXAMPLE_FILE_PATH = path.normalize(`${__dirname}/${EXAMPLE_FILE_NAME}`);
 
 const evaluateResult = result => {
   if (result.flow === flowResult.failed) {
