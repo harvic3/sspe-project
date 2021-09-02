@@ -36,7 +36,7 @@
     "brain.js": "^1.6.1",
     "inquirer": "^6.5.2",
     "minimist": "^1.2.5",
-    "node-emoji": "^1.10.0"
+    "node-emoji": "^1.11.0"
   },
   "husky": {
     "hooks": {
