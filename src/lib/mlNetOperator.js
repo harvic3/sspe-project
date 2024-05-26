@@ -1,12 +1,12 @@
 'use strict';
 
-const { Result, flowResult } = require('../utils/result');
+const { Result, flowResult } = require('../utils/result.js');
 const {
   generateFileData,
   generateRandomNumber,
   plainTextToValidArray,
-} = require('../utils/converter');
-const { saveApplicationFile, readFile } = require('../utils/fileManager');
+} = require('../utils/converter.js');
+const { saveApplicationFile, readFile } = require('../utils/fileManager.js');
 const { isValidCharsData, isValidFilePath } = require('../utils/validators');
 const brain = require('brain.js');
 
@@ -67,7 +67,7 @@ exports.trainNet = (iterations, errorThresh) => {
   try {
     if (trainingData && trainingData.lenght < 9) {
       throw new Error(
-        `The minimum data to train the net are 10 entries, you have ${trainingData.lenght} entries currently. Create more entries with "ml add".`
+        `The minimum data to train the net are 10 entries, you have ${trainingData.length} entries currently. Create more entries with "ml add".`
       );
     }
     config.iterations = iterations || 20000;
@@ -91,11 +91,11 @@ exports.trainNet = (iterations, errorThresh) => {
   return result;
 };
 
-exports.analizeFile = filePath => {
+exports.analiceFile = filePath => {
   const result = new Result();
   try {
-    if (!netJson || !netJson.type) {
-      throw { message: 'You must train the net to use it!' };
+    if (!netJson?.type) {
+      throw new Error('You must train the net to use it!');
     }
     if (!isValidFilePath(filePath)) {
       throw new Error(
@@ -104,7 +104,7 @@ exports.analizeFile = filePath => {
     }
     const fileData = readFile(filePath);
     if (!isValidCharsData(fileData)) {
-      throw new Error('The file don´t have a valid data');
+      throw new Error("The file don't have a valid data");
     }
     // This step verify others conditions
     plainTextToValidArray(fileData);

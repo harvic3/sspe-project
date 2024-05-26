@@ -22,20 +22,12 @@ const patterns = {
 exports.patterns = patterns;
 
 const haveTreeOrMoreLines = lines => {
-  if (!lines || lines.length < 3) {
-    return false;
-  }
-  return true;
+  return lines?.length >= 3;
 };
 
 const haveSameLengthPerLine = lines => {
-  if (
-    lines[0].length !== lines[1].length ||
-    lines[1].length !== lines[2].length
-  ) {
-    return false;
-  }
-  return true;
+  return !(lines[0].length !== lines[1].length ||
+    lines[1].length !== lines[2].length);
 };
 
 exports.plainTextToValidArray = fileData => {

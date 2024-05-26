@@ -19,7 +19,7 @@ exports.readFile = filePath => {
 
 exports.saveFile = (fileData, fileName, fromRootPath) => {
   const filePath = `${path.resolve(__dirname, '../../')}${
-    fromRootPath ? fromRootPath : ''
+    fromRootPath || ''
   }/${fileName}.txt`;
   if (existsSync(filePath)) {
     throw new Error(
@@ -31,16 +31,10 @@ exports.saveFile = (fileData, fileName, fromRootPath) => {
 
 exports.saveApplicationFile = (fileData, fileName, fromRootPath) => {
   const filePath = `${path.resolve(__dirname, '../../')}${
-    fromRootPath ? fromRootPath : ''
+    fromRootPath || ''
   }/${fileName}`;
   appendFileSync(filePath, fileData, { encoding: 'utf-8', flag: 'w' });
 };
-
-/*
-	Observation: synchronous methods were used because it was a console 
-	application for the use of one user, in case it was a service used by 
-	many users, it would use promises and asynchronous methods as a next function.
-*/
 
 exports.readDirectory = directoryPath =>
   new Promise((resolve, reject) => {

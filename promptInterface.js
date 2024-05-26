@@ -154,18 +154,18 @@ const doTraining = options => {
         console.log(result.message);
         console.timeEnd('time-process');
       } else {
-        console.log('Okay, don´t panic, nothing´s gonna happen.');
+        console.log(`Okay, don't panic, nothing's gonna happen.`);
         process.exit(1);
       }
     });
 };
 
-const analizeFile = options => {
+const analiceFile = options => {
   console.log(
     `Executing net with file ${options.path} ${emojis.get('coffee')}`
   );
   console.time('time-process');
-  const result = lib.analizeFile(options.path);
+  const result = lib.analiceFile(options.path);
   console.log('File data: ');
   console.log(result.fileData);
   console.log('String number: ');
@@ -178,7 +178,7 @@ const neuralNetWork = options => {
     addDataForTraining(options);
     return;
   } else if (options.path) {
-    analizeFile(options);
+    analiceFile(options);
     return;
   } else if (Object.keys(options).length === 1 || options.iter) {
     doTraining(options);

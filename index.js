@@ -12,7 +12,7 @@ const { flowResult } = require('./src/utils/result');
 const {
   addDataToTrainingFile,
   trainNet,
-  analizeFile,
+  analiceFile,
 } = require('./src/lib/mlNetOperator');
 
 const EXAMPLE_FILE_NAME = '/config/ExampleFile.txt';
@@ -21,7 +21,6 @@ const EXAMPLE_FILE_PATH = path.normalize(`${__dirname}/${EXAMPLE_FILE_NAME}`);
 const evaluateResult = result => {
   if (result.flow === flowResult.failed) {
     console.error(`Error: ${result.message}`);
-    process.exit(1);
   }
 };
 
@@ -63,7 +62,8 @@ exports.listFiles = () =>
         resolve(result.data);
       })
       .catch(error => {
-        reject(evaluateResult(error));
+        evaluateResult(error)
+        reject(new Error('Error listing files.'));
       });
   });
 
@@ -79,8 +79,8 @@ exports.doTraining = (iterations, errorThresh) => {
   return result;
 };
 
-exports.analizeFile = filePath => {
-  const result = analizeFile(filePath);
+exports.analiceFile = filePath => {
+  const result = analiceFile(filePath);
   evaluateResult(result);
   return result.data;
 };

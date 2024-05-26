@@ -47,20 +47,20 @@ const evaluateCandidate = (lines, index) => {
 
 const processFileLines = fileLines => {
   const limit = fileLines[0].length;
-  const hasMinimunThreeLines = lines => {
+  const hasMinimumThreeLines = lines => {
     if (lines < 3) {
       throw new Error('File data must have three lines');
     }
   };
-  const hasSameLengForLine = (lines, count) => {
+  const hasSameLengthForLine = (lines, count) => {
     for (let index in lines) {
       if (lines[index].length !== count) {
         throw new Error('The size per line in the data file must be the same.');
       }
     }
   };
-  hasMinimunThreeLines(fileLines);
-  hasSameLengForLine(fileLines, limit);
+  hasMinimumThreeLines(fileLines);
+  hasSameLengthForLine(fileLines, limit);
 
   let stringNumber;
   for (let cursor = 0; cursor < limit; cursor += 4) {
@@ -96,7 +96,7 @@ exports.processFile = filePath => {
     }
     const fileData = readFile(filePath);
     if (!isValidCharsData(fileData)) {
-      throw new Error('The file don´t have a correct format.');
+      throw new Error(`The file don't have a correct format.`);
     }
     const fileLines = plainTextToValidArray(fileData);
     const cleanedFileLines = deleteUnnecessaryLines(fileLines);

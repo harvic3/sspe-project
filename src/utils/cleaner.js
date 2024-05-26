@@ -8,7 +8,7 @@ exports.deleteUnnecessaryLines = lines => {
     lines.splice(3, 1);
     return lines;
   }
-  throw new Error(`The file don´t have a valid data.`);
+  throw new Error(`The file don't have a valid data.`);
 };
 
 exports.removeLineBreak = lines => {
